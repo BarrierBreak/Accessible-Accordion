@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+	<title>Accessible Accordion</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+		//Calling click function
+		$(".country-controls .country-content button").click(function(){
+		//On click event adding aria-expanded false,aria-hidden true and removing class active from non focus buttons
+		if($(this).attr("aria-expanded") == "true"){
+		$(".country-controls .country-content button").attr("aria-expanded","false");
+		 $(".country-controls .country-content div").attr('aria-hidden','true');
+		 $(".country-controls .country-content div").removeClass('active');
+		 $(".country-controls .country-content button i").addClass('fa-plus').removeClass('fa-minus');
+		}
+		else
+		{
+		$(".country-controls .country-content button").attr("aria-expanded","false");
+		 $(".country-controls .country-content div").attr('aria-hidden','true');
+		 $(".country-controls .country-content div").removeClass('active');
+		  $(".country-controls .country-content button i").addClass('fa-plus').removeClass("fa-minus");
+		 $(this).attr("aria-expanded","true");
+		 $(this).parent("h2").next("div").removeAttr("aria-hidden");
+		 $(this).parent("h2").next("div").addClass("active");
+		   $(this).find("i").removeClass('fa-plus').addClass("fa-minus");
+		}
+		  });
+		});
+	</script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style type="text/css">
+		/* button css */
+		.country .country-controls button{
+		max-width: 500px;
+		    width: 100%;
+		    border: none;
+		    border-radius: 3px;
+		    font-size: 2em;
+		    margin: 0.5em 0em;
+			background-color: #2F74B5;
+			color:#FFFF;
+			text-align: left;
+		}
+		/*-- adding css when focus is set to button */
+		button:focus{
+		outline: #000000 solid 4px;
+		}
+		/* -- adding display: none to non-active contents */
+		.country-controls .country-content div{
+		display:none;
+		}
+		/* -- adding display: block to active contents */
+		.country-controls .country-content div.active{
+		display:block;
+		}
+		.fa{
+		float:right;
+		}
+	</style>
+</head>
+
+<body>
+	<!--main accordion container starts-->
+	<div class="country">
+		<h1>Accessible Country Accordion</h1>
+		<div class="country-controls">
+			<div class="country-content">
+				<!--accordion header button -->
+				<h2>
+      <button aria-controls="country-india" aria-expanded="false" id="control-india">INDIA <i class="fa fa-plus" aria-hidden="true"></i></button>
+	  </h2>
+				<!---accordion content starts-->
+				<div id="country-india" aria-hidden="true">
+					<p>India, officially the Republic of India, is a country in South Asia</p>
+					<p>It is the seventh-largest country by area, the second-most populous country.</p>
+				</div>
+			</div>
+			<!---accordion content ends-->
+			<!--accordion header button -->
+			<div class="country-content">
+				<h2>
+      <button aria-controls="country-canada" aria-expanded="false" id="control-canada">CANADA <i class="fa fa-plus" aria-hidden="true"></i></button></h2>
+				<!---accordion content starts-->
+				<div id="country-canada" aria-hidden="true">
+					<p>Canada is a country in the northern part of North America</p>
+					<p>Its ten provinces and three territories extend from the Atlantic to the Pacific</p>
+				</div>
+			</div>
+			<!---accordion content ends-->
+			<!--accordion header button -->
+			<div class="country-content">
+				<h2>
+      <button aria-controls="country-australia" aria-expanded="false" id="control-australia">AUSTRALIA <i class="fa fa-plus" aria-hidden="true"></i></button></h2>
+				<!---accordion content starts-->
+				<div id="country-australia" aria-hidden="true">
+					<p>Australia, officially the Commonwealth of Australia</p>
+				</div>
+			</div>
+			<!---accordion content ends-->
+		</div>
+	</div>
+	<!--main accordion container ends-->
+</body>
+
+</html>
