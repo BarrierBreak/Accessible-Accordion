@@ -1,5 +1,5 @@
 # Accessible Accordion Design
-## Accordion Example
+## Introduction
 The below example section contains basic example about different countries. The same content can be replaced as per requirement. In this implementation, all panels of the accordion are collapsed at the same time and only one panel will be expanded at any given time.
 
 ![Accessible Accordion](Images/accordion.png)
